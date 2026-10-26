@@ -3,7 +3,7 @@
    Version: 2.1.0
    ============================================================ */
 
-const CACHE_VERSION = 'student-planner-v4';
+const CACHE_VERSION = 'student-planner-v5';
 
 /* Local assets to precache on install */
 const PRECACHE_LOCAL = [
