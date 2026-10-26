@@ -7,7 +7,6 @@ const CACHE_VERSION = 'student-planner-v3';
 
 /* Local assets to precache on install */
 const PRECACHE_LOCAL = [
-  './',
   'index.html',
   'schedule.html',
   'calendar.html',
