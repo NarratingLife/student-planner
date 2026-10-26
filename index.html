@@ -273,7 +273,16 @@
   <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/service-worker.js');
+      // 1. Automatically detect if running on a standard github.io subfolder layout
+      const isGitHubPages = window.location.hostname.includes('github.io');
+      
+      // 2. Set pathing context dynamically
+      const swPath = isGitHubPages ? '/student-planner/service-worker.js' : '/service-worker.js';
+      const swScope = isGitHubPages ? '/student-planner/' : '/';
+
+      navigator.serviceWorker.register(swPath, { scope: swScope })
+        .then(reg => console.log('[SW] Service Worker online! Scope:', reg.scope))
+        .catch(err => console.error('[SW] Activation failed:', err));
     });
   }
 </script>
