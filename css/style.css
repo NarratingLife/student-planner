@@ -221,15 +221,33 @@ a{ color:inherit; }
 .chip.high{ background:rgba(251,113,133,.14); color:#fb7185; border-color:rgba(251,113,133,.3); }
 
 /* form controls */
-.form-control, .form-select{
-  background:var(--surface-2)!important; border:1px solid var(--border)!important; color:var(--text)!important;
-  border-radius:11px!important; font-size:.9rem;
+/* form controls */
+.form-control, .form-select {
+  background: var(--surface-2) !important; 
+  border: 1px solid var(--border) !important; 
+  color: var(--text) !important;
+  border-radius: 11px !important; 
+  font-size: .9rem;
+  
+  /* --- CRITICAL MOBILE & CHROMIUM FIX --- */
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
 }
-.form-control:focus, .form-select:focus{ box-shadow:0 0 0 3px rgba(var(--accent),.2)!important; border-color:rgba(var(--accent),.5)!important; }
-.form-control::placeholder{ color:var(--text-faint); }
-label{ font-size:.8rem; font-weight:600; color:var(--text-soft); margin-bottom:4px; display:block; }
-.form-check-input{ background-color:var(--surface-2); border-color:var(--border); }
-.form-check-input:checked{ background-color:rgb(var(--accent)); border-color:rgb(var(--accent)); }
+
+/* Force dark/light theme options onto native mobile dropdown popups */
+.form-select option,
+select option {
+  background-color: #121724 !important; /* Solid fallback background */
+  color: #eef0f8 !important;            /* Readable text color */
+}
+
+/* Theme specific overrides for standard light theme option popups */
+[data-theme="light"] .form-select option,
+[data-theme="light"] select option {
+  background-color: #ffffff !important;
+  color: #161a26 !important;
+}
 
 /* modal */
 .modal-content{ background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-lg); color:var(--text); backdrop-filter:blur(24px); }
